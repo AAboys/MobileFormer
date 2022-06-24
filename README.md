@@ -72,3 +72,27 @@ This is a PyTorch implementation of the paper [Mobile-Former: Bridging MobileNet
 <td align="center"><a href="https://drive.google.com/file/d/15uWYzx2VWWUjacZQHB56vOHzKxQDlp5O/view?usp=sharing">download</a></td>
 </tr>
 </tbody></table>
+
+## Mobile-Former ImageNet Training
+
+To train mobile-former-508m, run the following on 1 node with 8 GPUs:
+```
+python3 -m torch.distributed.launch --nproc_per_node=8 train.py $DATA_PATH \
+    --output $OUTPUT_PATH1 \
+    --model mobile-former-508m \
+    -j 8 \
+    --batch-size 128 \
+    --epochs 450 \
+    --opt adamw \
+    --sched cosine \
+    --lr 0.001 \
+    --weight-decay 0.20 \
+    --drop 0.3 \
+    --drop-path 0.0 \
+    --mixup 0.2 \
+    --aa rand-m9-mstd0.5 \
+    --remode pixel \
+    --reprob 0.2 \
+    --color-jitter 0. \
+    --log-interval 200 \
+```
