@@ -216,7 +216,7 @@ python3 -m torch.distributed.launch --nproc_per_node=8 train.py $DATA_PATH \
     --opt adamw \
     --sched cosine \
     --lr 0.0008 \
-    --weight-decay 0.075 \
+    --weight-decay 0.08 \
     --drop 0.1 \
     --drop-path 0.0 \
     --mixup 0.2 \
