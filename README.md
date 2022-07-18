@@ -118,7 +118,27 @@ python3 -m torch.distributed.launch --nproc_per_node=8 train.py $DATA_PATH \
     --color-jitter 0. \
     --log-interval 200 \
 ```
-
+mobile-former-214m
+```
+python3 -m torch.distributed.launch --nproc_per_node=8 train.py $DATA_PATH \
+    --output $OUTPUT_PATH1 \
+    --model mobile-former-214m \
+    -j 8 \
+    --batch-size 128 \
+    --epochs 450 \
+    --opt adamw \
+    --sched cosine \
+    --lr 0.0009 \
+    --weight-decay 0.15 \
+    --drop 0.2 \
+    --drop-path 0.0 \
+    --mixup 0.2 \
+    --aa rand-m9-mstd0.5 \
+    --remode pixel \
+    --reprob 0.2 \
+    --color-jitter 0. \
+    --log-interval 200 \
+```
 mobile-former-96m
 ```
 python3 -m torch.distributed.launch --nproc_per_node=8 train.py $DATA_PATH \
